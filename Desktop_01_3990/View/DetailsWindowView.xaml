@@ -24,7 +24,9 @@
 
             <TextBlock Text="{Binding StudentID}" 
                        Margin="10"/>
-            
+            <DatePicker SelectedDate="{Binding DateOfBirthDMY, Mode=TwoWay}" />
+
+
             <TextBlock Text="Last Name" 
                    Margin="10 54 0 0"/>
             <TextBlock Text="{Binding Lastname}" 

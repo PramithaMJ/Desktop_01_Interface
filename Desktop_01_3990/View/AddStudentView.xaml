@@ -31,6 +31,10 @@
 
             <TextBlock Text="Student ID:" Margin="5"/>
             <TextBox Text="{Binding StudentID, UpdateSourceTrigger=PropertyChanged}" Margin="5" Grid.Column="1"/>
+            <TextBlock Text="BP:" Margin="5"/>
+
+            <DatePicker SelectedDate="{Binding DateOfBirthDMY,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
             <TextBlock Text="First Name:" Margin="5"/>
             <TextBox Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" Margin="5" Grid.Column="1"/>
             <TextBlock Text="Last Name:" Margin="5" Grid.Row="1"/>

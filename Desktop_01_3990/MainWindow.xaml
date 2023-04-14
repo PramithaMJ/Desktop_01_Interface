@@ -200,11 +200,20 @@
                     <Icon:PackIconMaterial Kind="HelpCircleOutline" />
                 </Button>
 
+                <Button Style="{StaticResource topButton}" Margin="0 0 90 0"
+                        ToolTip="Minimize"
+                        Background="#dcdcdc" HorizontalAlignment="Right"
+                        Click="Button_Minimize_Click">
+                    <Icon:PackIconMaterial Kind="WindowMinimize" />
+                </Button>
+
                 <!--Page Title-->
-                <TextBlock Text="STUDENT DETAILS" Grid.Row="1" 
+                <TextBlock x:Name="btnnMinimize"
+                           Text="STUDENT DETAILS" Grid.Row="1" 
                            FontSize="32" FontWeight="SemiBold"
                            Margin="0 20 0 0"
-                           HorizontalAlignment="Left" Foreground="#121518"/>
+                           HorizontalAlignment="Left" Foreground="#121518"
+                           />
 
                 <!--Add Button-->
                 <Button Style="{StaticResource addButton}" Command="{Binding AddStudentCommand}">
@@ -334,6 +343,10 @@
                         <DataGridTextColumn Header="Student ID" 
                                             Width="*" 
                                             Binding="{Binding StudentID}" 
+                                            IsReadOnly="True" />
+                        <DataGridTextColumn Header="Datepick" 
+                                            Width="*" 
+                                            Binding="{Binding DateOfBirthDMY}" 
                                             IsReadOnly="True" />
                         <DataGridTextColumn Header="First Name" 
                                             Width="*" 

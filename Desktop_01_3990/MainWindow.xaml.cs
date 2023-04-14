@@ -118,6 +118,11 @@ namespace Desktop_01_3990
             }
         }
 
+        private void Button_Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
 
 
 

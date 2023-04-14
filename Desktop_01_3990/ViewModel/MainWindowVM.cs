@@ -98,13 +98,13 @@ namespace Desktop_01_3990.ViewModel
         {
             students = new ObservableCollection<Student>();
             BitmapImage image1 = new BitmapImage(new Uri("/Model/Images/1.png", UriKind.Relative));
-            students.Add(new Student("EG/2020/3990", 12, "sadfsd", "basdfndara",true,2.45, 3, "12/1/2000", image1));
+            students.Add(new Student("EG/2020/3990", 12, "sadfsd", "basdfndara",true,2.45, 3, "12/1/2000", image1, new DateTime(2000, 1, 12)));
             BitmapImage image2 = new BitmapImage(new Uri("/Model/Images/2.png", UriKind.Relative));
-            students.Add(new Student("EG/2021/3985",12, "ghjkg", "banjhdarghj",true,3.25,2, "12/1/2000", image2));
+            students.Add(new Student("EG/2021/3985",12, "ghjkg", "banjhdarghj",true,3.25,2, "12/1/2000", image2, new DateTime(2000, 1, 12)));
             BitmapImage image3 = new BitmapImage(new Uri("/Model/Images/3.png", UriKind.Relative));
-            students.Add(new Student("EG/2018/2892",12, "sghjf", "bandara",true, 2.48,8, "12/1/2000", image3));
+            students.Add(new Student("EG/2018/2892", 12, "sghjf", "bandara", true, 2.48, 8, "12/1/2000", image3, new DateTime(2000, 1, 12)));
             BitmapImage image4 = new BitmapImage(new Uri("/Model/Images/4.png", UriKind.Relative));
-            students.Add(new Student("EG/2021/7845",12, "shenghji3", "bfgfgdfndara",false,3.2,1, "12/1/2000", image4));
+            students.Add(new Student("EG/2021/7845",12, "shenghji3", "bfgfgdfndara",false,3.2,1, "12/1/2000", image4, new DateTime(2000, 1, 12)));
 
         }
     }

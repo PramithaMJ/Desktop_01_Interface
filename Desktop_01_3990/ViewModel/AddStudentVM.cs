@@ -47,12 +47,15 @@ namespace Desktop_01_3990.ViewModel
         [ObservableProperty]
         public BitmapImage selectedImage;
 
+        [ObservableProperty]
+        public DateTime dateOfBirthDMY;
         
 
         public AddStudentVM(Student u)
         {
             Student1 = u;
 
+            dateOfBirthDMY = Student1.DateOfBirthDMY;
             studentID = Student1.StudentID;
             firstname = Student1.FirstName;
             lastname = Student1.LastName;
@@ -64,10 +67,11 @@ namespace Desktop_01_3990.ViewModel
             selectedImage = Student1.Image;
 
         }
+
         public AddStudentVM()
         {
-
         }
+
 
 
         //get image 
@@ -108,32 +112,33 @@ namespace Desktop_01_3990.ViewModel
 
                 Student1 = new Student()
                 {
-                    StudentID=studentID,
+                    StudentID = studentID,
                     FirstName = firstname,
                     LastName = lastname,
-                    Semester  = semester,
+                    Semester = semester,
                     Age = age,
-                    Gender= gender,
+                    Gender = gender,
                     DateOfBirth = dateofbirth,
                     Image = selectedImage,
-
-                    GPA = gpa
+                    GPA = gpa,
+                    DateOfBirthDMY = dateOfBirthDMY
 
                 };
 
-
             }
+
             else
             {
-                Student1.Semester =semester;
+                Student1.Semester = semester;
                 Student1.FirstName = firstname;
                 Student1.LastName = lastname;
                 Student1.Age = age;
                 Student1.GPA = gpa;
                 Student1.DateOfBirth = dateofbirth;//-----------------
-                Student1.Gender= gender;
+                Student1.Gender = gender;
                 Student1.Image = selectedImage;
                 Student1.DateOfBirth = dateofbirth;
+                Student1.DateOfBirthDMY = dateOfBirthDMY;
 
 
 
