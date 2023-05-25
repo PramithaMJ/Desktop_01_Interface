@@ -20,14 +20,13 @@ namespace Desktop_01_3990.ViewModel
 
 
 
-        public ICommand LoginCommand { get; }
+       // public ICommand LoginCommand { get; }
 
         public LogInWindowVM()
         {
-            LoginCommand = new RelayCommand(Login);
+           // LoginCommand = new RelayCommand(Login);
         }
-    //    [RelayCommand]
-
+        [RelayCommand]
         private void Login()
         {
             // Perform login logic here
@@ -46,7 +45,7 @@ namespace Desktop_01_3990.ViewModel
             {
                 // Login failed
                 // Display an error message or perform any desired actions
-                MessageBox.Show("Incorrect User Name or Password ");
+                MessageBox.Show("Incorrect User Name or Password!!!");
             }
           
         }
