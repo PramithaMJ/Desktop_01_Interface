@@ -36,6 +36,7 @@ namespace Desktop_01_3990.ViewModel
             if (Username == "admin" && Password == "1234")
             {
                 MainWindow mainLg = new MainWindow();
+                CloseCurrentWindow();
                 mainLg.Show();
                 
                 // Login successful
@@ -46,6 +47,14 @@ namespace Desktop_01_3990.ViewModel
                 // Login failed
                 // Display an error message or perform any desired actions
                 MessageBox.Show("Incorrect User Name or Password ");
+            }
+          
+        }
+        public void CloseCurrentWindow()
+        {
+            foreach (Window item in Application.Current.Windows)
+            {
+                if (item.DataContext == this) item.Close();
             }
         }
     }
