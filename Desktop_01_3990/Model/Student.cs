@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Desktop_01_3990.Model
     {
         public string StudentID { get;  set; }
         public int Age { get; set; }
-        public bool Gender { get; set; }
+        public string Gender { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
@@ -20,6 +21,9 @@ namespace Desktop_01_3990.Model
         public string DateOfBirth { get; set; }
         public Double GPA { get; set; }
 
+        
+        public string Department { get; set; }  
+
         public String ImagePath
         {
             get { return $"/Images/{Image}"; }
@@ -27,8 +31,8 @@ namespace Desktop_01_3990.Model
 
         public int Semester { get; set; }
         public DateTime DateOfBirthDMY { get;  set; }
-
-        public Student(string studentID, int age, string firstName, string lastName, bool gender, double gpa, int semester, string dateOfBirth, BitmapImage image, DateTime dateOfBirthDMY)
+  
+        public Student(string studentID, int age, string firstName, string lastName, string gender, double gpa, int semester, string dateOfBirth, BitmapImage image, DateTime dateOfBirthDMY,string department)
         {
             DateOfBirthDMY = dateOfBirthDMY;
             StudentID = studentID;
@@ -40,27 +44,9 @@ namespace Desktop_01_3990.Model
             LastName = lastName;
             DateOfBirth = dateOfBirth;
             Image = image;
+            Department = department;
         }
-        //public Student(string studentID, int age, string firstName, string lastName, bool gender, double gpa, int semester, string dateOfBirth, BitmapImage image, DateTime dateOfBirthDMY)
-        //{
-        //    this.StudentID = studentID;
-        //    this.Semester = semester;
-        //    this.FirstName = firstName;
-        //    this.LastName = lastName;
-        //    this.Gender = gender;
-        //    this.GPA = gpa;
-        //    this.DateOfBirth = dateOfBirth;
-        //    this.DateOfBirthDMY = dateOfBirthDMY;
-        //    this.Image = image;
-
-        //    // Calculate age from date of birth
-        //    this.Age = DateTime.Today.Year - dateOfBirthDMY.Year;
-        //    if (DateTime.Today.DayOfYear < dateOfBirthDMY.DayOfYear)
-        //    {
-        //        this.Age--;
-        //    }
-        //}
-
+   
 
 
         public Student(string v)

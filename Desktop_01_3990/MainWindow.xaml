@@ -33,27 +33,27 @@
             <Grid>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="100"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <!--Menu Icon-->
-                <Button Style="{StaticResource topButton}"
+                <!--<Button Style="{StaticResource topButton}"
                         Margin="20 28 0 35">
                     <Icon:PackIconMaterial Kind="Menu"
                                            Width="15" Height="15"/>
-                </Button>
+                </Button>-->
 
-                <Border Grid.Row="1" Background="#623ed0"
+                <Border Grid.Row="1" Background="#8d1294"
                         CornerRadius="0 50 0 30">
                     <DockPanel>
                         <!--Menu Logo-->
-                        <Border Width="80" Height="80"
+                        <Border Width="100" Height="100"
                                 Padding="3" Background="white"
                                 CornerRadius="100"
                                 DockPanel.Dock="Top"
                                 HorizontalAlignment="Left"
-                                Margin="20 -30 0 0">
+                                Margin="50 -30 0 0">
                             <Ellipse>
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="{Binding SelectedStudent.Image}"/>
@@ -93,6 +93,7 @@
                                     <Icon:PackIconMaterial Kind="HomeVariant"
                                                            Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="DashBoard"/>
+                                    
                                 </StackPanel>
                             </Button>
 
@@ -165,26 +166,22 @@
 
                 <!--Search Textbox-->
                 <Grid Width="300" HorizontalAlignment="Left">
-                    <TextBlock Margin="20 0" VerticalAlignment="Center"
-                               Foreground="#b0b9c6" IsHitTestVisible="False"
-                               Panel.ZIndex="1" Text="Search..." />
-                    
-                    <!--Visibility="{Binding ElementName=txtSearch,Path=Text.IsEmpty,
-                                                    Converter={StaticResource BoolToVis}}"/>-->
+                    <TextBlock x:Name="searchPlaceholderTextBlock" Margin="20 0" VerticalAlignment="Center"
+               Foreground="#b0b9c6" IsHitTestVisible="False"
+               Panel.ZIndex="1" Text="Search..." />
 
-                    <!--<TextBox x:Name="txtSearch" Style="{StaticResource textboxSearch}" Height="40"/>-->
-                    
-                        <TextBox x:Name="searchTextBox" Margin="10" Width="275" Height="50"
-                                 BorderBrush="Transparent" 
-                                 FontSize="15" 
-                                 TextChanged="searchTextBox_TextChanged" />
-                    
-                    
+                    <Border CornerRadius="20" Background="#FFFFFF" Margin="10">
+                        <TextBox x:Name="searchTextBox" Margin="5" Width="auto" Height="auto"
+                 BorderBrush="Transparent" 
+                 FontSize="15"  
+                 TextChanged="searchTextBox_TextChanged" />
+                    </Border>
 
                     <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15"
-                                           VerticalAlignment="Center" Margin="0 0 15 0"
-                                           Foreground="#b0b9c6" HorizontalAlignment="Right"/>
+                           VerticalAlignment="Center" Margin="0 0 15 0"
+                           Foreground="#b0b9c6" HorizontalAlignment="Right"/>
                 </Grid>
+
 
                 <!--Top Button-->
                 <Button x:Name="btnClose" ToolTip="Close"
@@ -195,9 +192,9 @@
                 </Button>
 
                 <Button Style="{StaticResource topButton}" Margin="0 0 55 0"
-                        ToolTip="Help"
+                        ToolTip="Resize" Click="Button_Resize_Click"
                         Background="#dcdcdc" HorizontalAlignment="Right">
-                    <Icon:PackIconMaterial Kind="HelpCircleOutline" />
+                    <Icon:PackIconMaterial Kind="Resize" />
                 </Button>
 
                 <Button Style="{StaticResource topButton}" Margin="0 0 90 0"
@@ -208,22 +205,20 @@
                 </Button>
 
                 <!--Page Title-->
-                <TextBlock x:Name="btnnMinimize"
-                           Text="STUDENT DETAILS" Grid.Row="1" 
+                <Border Grid.Row="1" 
+                    BorderBrush="Blue" CornerRadius="20" BorderThickness="3">
+                    <TextBlock x:Name="btnnMinimize"
+                           Text="STUDENT DETAILS" 
                            FontSize="32" FontWeight="SemiBold"
-                           Margin="0 20 0 0"
-                           HorizontalAlignment="Left" Foreground="#121518"
+                         
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"    
+                           Foreground="#121518"
                            />
+                </Border>
+                
 
-                <!--Add Button-->
-                <Button Style="{StaticResource addButton}" Command="{Binding AddStudentCommand}">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center"
-                                               Width="11" Height="11"
-                                               Margin="0 1 8 0"/>
-                        <TextBlock Text="Add new Member"/>
-                    </StackPanel> 
-                </Button>
+             
 
                 <!--Seperator-->
                 <Separator Height="1" Grid.Row="3" Background="#dae2ea"
@@ -231,7 +226,7 @@
 
                 <!--tab button-->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
-                    <Button Content="Club Staff" Style="{StaticResource tabButton}"
+                    <Button Content="Home" Style="{StaticResource tabButton}"
                             BorderBrush="#784ff2"/>
                     <Button Content="Players" Style="{StaticResource tabButton}"/>
                     <Button Content="Achieved" Style="{StaticResource tabButton}"/>
@@ -264,36 +259,39 @@
                         </StackPanel>
                     </Button>
                 </StackPanel>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" BorderBrush="DarkBlue" BorderThickness="3" CornerRadius="30">
+                        <Grid  Grid.Row="4" >      <!--Counter title-->
+                         <TextBlock Text="Added student detail list" 
+                                    FontSize="20" 
+                                    FontWeight="SemiBold" Margin="10"
+                                    Foreground="#121518" HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                    </Grid>
+                    </Border>
+                    
+                     
 
-                <!--Counter title-->
-                <TextBlock Text="Added student details" Grid.Row="4" FontSize="18"
-                           FontWeight="SemiBold"
-                           Foreground="#121518" HorizontalAlignment="Left"
-                           VerticalAlignment="Center"/>
-
-                <TextBlock Text="Filter By" Grid.Row="4" FontSize="13"
-                           FontWeight="SemiBold" Margin="0 0 215 0"
-                           Foreground="#121518" HorizontalAlignment="Right"
-                           VerticalAlignment="Center"/>
-
-                <!--Filter Textbox-->
-                <Grid Width="300" HorizontalAlignment="Right" Grid.Row="4">
-                    <TextBlock Margin="15 0" VerticalAlignment="Center"
-                               Foreground="#b0b9c6" IsHitTestVisible="False"
-                               Panel.ZIndex="1" Text="Search in members"/>
-                    <!--Visibility="{Binding ElementName=textFilter,Path=Text.IsEmpty,
-                                                    Converter={StaticResource BoolToVis}}"/>-->
-
-                    <TextBox x:Name="textFilter" Style="{StaticResource textboxFilter}" Height="40"/>
-
-
+                    <Grid Grid.Column="1">
+                        <!--Add Button-->
+                        <Grid  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" >
+                            <Button Style="{StaticResource addButton}" Command="{Binding AddStudentCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center"
+                                               Width="11" Height="11"
+                                               Margin="0 1 8 0"/>
+                                    <TextBlock Text="Add new Member"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    
                 </Grid>
-                <!--Student Data Grid-->
-
-                <!--Style="{DynamicResource DataGridStyle1}"
-                          CellStyle="{DynamicResource DataGridCellStyle1}"
-                          ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
-                          RowStyle="{DynamicResource DataGridRowStyle1}"-->
+         
 
 
                 <DataGrid Name="StudentsDatagrid"
@@ -344,10 +342,7 @@
                                             Width="*" 
                                             Binding="{Binding StudentID}" 
                                             IsReadOnly="True" />
-                        <DataGridTextColumn Header="Datepick" 
-                                            Width="*" 
-                                            Binding="{Binding DateOfBirthDMY}" 
-                                            IsReadOnly="True" />
+                
                         <DataGridTextColumn Header="First Name" 
                                             Width="*" 
                                             Binding="{Binding FirstName,UpdateSourceTrigger=PropertyChanged}" 
@@ -365,26 +360,29 @@
                         <DataGridTextColumn Header="GPA" Width="auto" 
                                             Binding="{Binding GPA,UpdateSourceTrigger=PropertyChanged}" 
                                             IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Semester" Width="auto" 
+                        <DataGridTextColumn Header="Semester" Width="auto"
                                             Binding="{Binding Semester,UpdateSourceTrigger=PropertyChanged}" 
                                             IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Department" Width="auto"
+                                            Binding="{Binding Department,UpdateSourceTrigger=PropertyChanged}"
+                                            />
                         <DataGridTextColumn Header="Gender" Width="auto" 
                                             Binding="{Binding Gender,UpdateSourceTrigger=PropertyChanged}" 
                                             IsReadOnly="True"/>
 
-                        <DataGridTemplateColumn>
+                        <!--<DataGridTemplateColumn>
 
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Command="{Binding DeleteCommand,ElementName=StudentsDatagrid}"
-                                            CommandParameter="{Binding}" 
+                                            CommandParameter="{Binding}"  
                                             Style="{StaticResource gridRemoveButton}">
                                         <Icon:PackIconMaterial Kind="DeleteOutline"
                                                                Style="{StaticResource gridButtonIcon}"/>
                                     </Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                        </DataGridTemplateColumn>-->
                     </DataGrid.Columns>
                    
                     <!--<DataGrid.CellStyle>
@@ -396,48 +394,12 @@
 
                 </DataGrid>
 
-                <!--Pagination Section-->
-                <Border Grid.Row="6" HorizontalAlignment="Right"
-                        BorderBrush="#dee4ec" BorderThickness="1"
-                        CornerRadius="5" Padding="5" Background="white"
-                        Margin="0 10 10 10">
-                    <StackPanel Orientation="Horizontal">
-
-                        <Button Style="{StaticResource paginButton}">
-                            <Icon:PackIconMaterial Kind="ChevronDoubleLeft" 
-                                                   Style="{StaticResource paginButtonIcon}"/>
-                        </Button>
-
-                        <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                        <Button Style="{StaticResource paginButton}" Content="1"/>
-                        <Button Style="{StaticResource paginButton}" Content="2"
-                                Background="#7950f2" Foreground="#ffffff"/>
-                        <Button Style="{StaticResource paginButton}" Content="3"/>
-
-                        <TextBlock Text="..." Foreground="#6c7682"
-                                   VerticalAlignment="Center" FontSize="15"
-                                   Margin="10 0"/>
-
-                        <Button Style="{StaticResource paginButton}" Content="7"/>
-                        <Button Style="{StaticResource paginButton}" Content="8"/>
-                        <Button Style="{StaticResource paginButton}" Content="9"/>
-
-                        <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                        <Button Style="{StaticResource paginButton}">
-                            <Icon:PackIconMaterial Kind="ChevronDoubleRight" 
-                                                   Style="{StaticResource paginButtonIcon}"/>
-                        </Button>
-
-
-
-                    </StackPanel>
-                </Border>
+                
 
             </Grid>
         </Grid>
 
 
     </Border>
+    
 </Window>

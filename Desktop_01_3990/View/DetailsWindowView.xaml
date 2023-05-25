@@ -5,50 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Desktop_01_3990.View" 
         xmlns:viewmodel="clr-namespace:Desktop_01_3990.ViewModel" 
-        d:DataContext="{d:DesignInstance Type=viewmodel:AddStudentVM}"
+        d:DataContext="{d:DesignInstance Type=viewmodel:AddEditStudentVM}"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="DetailsWindowView" Height="600" Width="400">
     <Grid>
-        <StackPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             
+            <Grid Grid.Column="0">
 
-            <Border Width="auto" Height="auto" CornerRadius="50">
+                <Border Width="auto" Height="auto" CornerRadius="50">
 
-                <Image Width="100" Height="auto" Margin="0 0 1 0" 
+                    <Image Width="100" Height="auto" Margin="0 0 1 0" 
                        Source="{Binding Image}" />
-            </Border>
+                </Border>
+            </Grid>
             
-            
-            <TextBlock Text="Student ID"
+            <Grid Grid.Column="1">
+                <StackPanel>
+
+
+
+
+                    <TextBlock Text="Student ID"
                    Margin="10 20 0 0"/>
 
-            <TextBlock Text="{Binding StudentID}" 
+                    <TextBlock Text="{Binding StudentID}" 
                        Margin="10"/>
-            <DatePicker SelectedDate="{Binding DateOfBirthDMY, Mode=TwoWay}" />
+                    <DatePicker SelectedDate="{Binding DateOfBirthDMY, Mode=TwoWay}" />
 
 
-            <TextBlock Text="Last Name" 
+                    <TextBlock Text="Last Name" 
                    Margin="10 54 0 0"/>
-            <TextBlock Text="{Binding Lastname}" 
+                    <TextBlock Text="{Binding Lastname}" 
                        Margin="10"/>
-            
-            <TextBlock Text="Age" 
+
+                    <TextBlock Text="Age" 
                    Margin="10 54 0 0"/>
-            <TextBlock Text="{Binding Age}" 
+                    <TextBlock Text="{Binding Age}" 
                        Margin="10"/>
-            
-            <TextBlock Text="Semester" 
+
+                    <TextBlock Text="Semester" 
                    Margin="10 54 0 0"/>
-            <TextBlock Text="{Binding Semester}" 
+                    <TextBlock Text="{Binding Semester}" 
                        Margin="10"/>
-            
-            <TextBlock Text="Gpa" 
+
+                    <TextBlock Text="Gpa" 
                    Margin="10 54 0 0"/>
-            <TextBlock Text="{Binding Gpa}" 
+                    <TextBlock Text="{Binding Gpa}" 
                        Margin="10"/>
+
+                </StackPanel>
+
+            </Grid>
             
-        </StackPanel>
-        
+        </Grid>
+       
         
     </Grid>
 </Window>

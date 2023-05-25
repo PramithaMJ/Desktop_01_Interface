@@ -16,15 +16,14 @@ using System.Windows.Shapes;
 namespace Desktop_01_3990.View
 {
     /// <summary>
-    /// Interaction logic for AddStudentView.xaml
+    /// Interaction logic for LogInWindowView.xaml
     /// </summary>
-    public partial class AddStudentView : Window
+    public partial class LogInWindowView : Window
     {
-        public AddStudentView(AddStudentVM vm)
+        public LogInWindowView()
         {
             InitializeComponent();
-            DataContext = vm;
-            vm.CloseAction = () => Close();
+            DataContext = new LogInWindowVM();
         }
     }
 }

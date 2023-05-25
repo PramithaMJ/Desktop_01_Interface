@@ -30,18 +30,6 @@ namespace Desktop_01_3990
             InitializeComponent();
             DataContext = new MainWindowVM();
 
-            //var converter = new BrushConverter();
-            //ObservableCollection<Student> students = new ObservableCollection<Student>();
-
-            //////Create DataGrid Items Info
-            //students.Add(new Student { Number = "1", Character = "A", bgColor = (Brush)converter.ConvertFromString("#ff5252"), Name = "Dohn", Position = "Coach", Email = "132@gmail.com", Phone = "1326548794" });
-            //students.Add(new Student { Number = "2", Character = "B", bgColor = (Brush)converter.ConvertFromString("#1e88e5"), Name = "Naoh", Position = "Administer", Email = "gfhf@gmail.com", Phone = "4561325467" });
-            //students.Add(new Student { Number = "3", Character = "C", bgColor = (Brush)converter.ConvertFromString("#1098ad"), Name = "Amma", Position = "Staff", Email = "dsds@gmail.com", Phone = "5462133695" });
-            //students.Add(new Student { Number = "4", Character = "D", bgColor = (Brush)converter.ConvertFromString("#1e88e5"), Name = "Niyan", Position = "Manager", Email = "", Phone = "4242583691" });
-            //students.Add(new Student { Number = "5", Character = "E", bgColor = (Brush)converter.ConvertFromString("#0ca678"), Name = "Saji", Position = "Coach", Email = "abc@gmail.com", Phone = "7535196394" });
-
-            //StudentsDatagrid.ItemsSource= students;
-
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -98,6 +86,8 @@ namespace Desktop_01_3990
             string searchText = searchTextBox.Text;
             ICollectionView view = CollectionViewSource.GetDefaultView(StudentsDatagrid.ItemsSource);
 
+            TextBlock searchPlaceholderTextBlock = (TextBlock)FindName("searchPlaceholderTextBlock");
+
             if (!string.IsNullOrEmpty(searchText))
             {
                 view.Filter = item =>
@@ -109,36 +99,31 @@ namespace Desktop_01_3990
                             student2.LastName.Contains(searchText) ||
                             student2.Age.ToString().Contains(searchText) ||
                             student2.DateOfBirth.ToString().Contains(searchText) ||
+                            student2.Department.ToString().Contains(searchText) ||
                             student2.GPA.ToString().Contains(searchText));
                 };
+
+                searchPlaceholderTextBlock.Visibility = Visibility.Collapsed;
             }
             else
             {
                 view.Filter = null;
+                searchPlaceholderTextBlock.Visibility = Visibility.Visible;
             }
         }
+
 
         private void Button_Minimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
-
-
-
-
-
-        //public class Student
-        //{
-        //    public string Character { get; set; }
-        //    public string Number { get; set; }
-        //    public string Name { get; set; }
-        //    public string Position { get; set; }
-        //    public string Email { get; set; }
-        //    public string Phone { get; set; }
-        //    public Brush bgColor { get; set; }
-
-        //}
+        private void Button_Resize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal)
+                this.WindowState = WindowState.Maximized;
+            else this.WindowState = WindowState.Normal;
+        }
     }
 
 }

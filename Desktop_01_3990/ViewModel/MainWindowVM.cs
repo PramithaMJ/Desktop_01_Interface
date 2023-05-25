@@ -17,10 +17,11 @@ namespace Desktop_01_3990.ViewModel
     {
         [ObservableProperty]
         public ObservableCollection<Student> students;
+
+        
+
         [ObservableProperty]
         public Student selectedStudent = null;
-
-
 
         public void CloseMainWindow()
         {
@@ -40,7 +41,7 @@ namespace Desktop_01_3990.ViewModel
         [RelayCommand]
         public void AddStudent()
         {
-            var vm = new AddStudentVM();
+            var vm = new AddEditStudentVM();
             vm.title = "ADD USER";
             AddStudentView window = new AddStudentView(vm);
             window.ShowDialog();
@@ -59,7 +60,7 @@ namespace Desktop_01_3990.ViewModel
             {
                 string name = selectedStudent.FirstName;
                 students.Remove(selectedStudent);
-                MessageBox.Show($"{name} is Deleted successfuly.", "DELETED \a ");
+                MessageBox.Show($"{name} is Deleted successfuly!!!.", "DELETED \a ");
 
             }
             else
@@ -69,12 +70,13 @@ namespace Desktop_01_3990.ViewModel
 
             }
         }
+
         [RelayCommand]
         public void ExecuteEditStudentCommand()
         {
             if (selectedStudent != null)
             {
-                var vm = new AddStudentVM(selectedStudent);
+                var vm = new AddEditStudentVM(selectedStudent);
                 vm.title = "EDIT USER";
                 var window = new AddStudentView(vm);
 
@@ -98,13 +100,13 @@ namespace Desktop_01_3990.ViewModel
         {
             students = new ObservableCollection<Student>();
             BitmapImage image1 = new BitmapImage(new Uri("/Model/Images/1.png", UriKind.Relative));
-            students.Add(new Student("EG/2020/3990", 12, "sadfsd", "basdfndara",true,2.45, 3, "12/1/2000", image1, new DateTime(2000, 1, 12)));
+            students.Add(new Student("EG/2020/3990", 12, "sadfsd", "basdfndara","Male",2.45, 3, "12/1/2000", image1, new DateTime(2000, 1, 12),"Elec"));
             BitmapImage image2 = new BitmapImage(new Uri("/Model/Images/2.png", UriKind.Relative));
-            students.Add(new Student("EG/2021/3985",12, "ghjkg", "banjhdarghj",true,3.25,2, "12/1/2000", image2, new DateTime(2000, 1, 12)));
+            students.Add(new Student("EG/2021/3985",12, "ghjkg", "banjhdarghj", "Male", 3.25,2, "12/1/2000", image2, new DateTime(2000, 1, 12),"Com"));
             BitmapImage image3 = new BitmapImage(new Uri("/Model/Images/3.png", UriKind.Relative));
-            students.Add(new Student("EG/2018/2892", 12, "sghjf", "bandara", true, 2.48, 8, "12/1/2000", image3, new DateTime(2000, 1, 12)));
+            students.Add(new Student("EG/2018/2892", 12, "sghjf", "bandara", "Male", 2.48, 8, "12/1/2000", image3, new DateTime(2000, 1, 12),"Mechanical"));
             BitmapImage image4 = new BitmapImage(new Uri("/Model/Images/4.png", UriKind.Relative));
-            students.Add(new Student("EG/2021/7845",12, "shenghji3", "bfgfgdfndara",false,3.2,1, "12/1/2000", image4, new DateTime(2000, 1, 12)));
+            students.Add(new Student("EG/2021/7845",12, "shenghji3", "bfgfgdfndara", "FeMale", 3.2,1, "12/1/2000", image4, new DateTime(2000, 1, 12),"Civil"));
 
         }
     }

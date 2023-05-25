@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Windows;
 using Desktop_01_3990.Model;
+using System.Collections.ObjectModel;
+using System.IO.Packaging;
 
 namespace Desktop_01_3990.ViewModel
 {
-    public partial class AddStudentVM : ObservableObject
+    public partial class AddEditStudentVM : ObservableObject
 
     {
         [ObservableProperty]
@@ -23,6 +25,9 @@ namespace Desktop_01_3990.ViewModel
 
         [ObservableProperty]
         public int semester;
+
+        public ObservableCollection<int> Semesters { get; } = 
+            new ObservableCollection<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
 
         [ObservableProperty]
         public string lastname;
@@ -37,9 +42,11 @@ namespace Desktop_01_3990.ViewModel
         public double gpa;
 
         [ObservableProperty]
-        public bool gender;
+        public string gender;
 
-        //To change the tile
+        public ObservableCollection<string> GenderOptions { get; } = 
+            new ObservableCollection<string> { "Male", "Female" };
+       
 
         [ObservableProperty]
         public string title;
@@ -49,27 +56,74 @@ namespace Desktop_01_3990.ViewModel
 
         [ObservableProperty]
         public DateTime dateOfBirthDMY;
-        
 
-        public AddStudentVM(Student u)
+        [ObservableProperty]
+        public string department;
+        public ObservableCollection<string> Departments { get; } = 
+            new ObservableCollection<string> { "Electrical Engineering", "Computer Engineering", "Mechanical Engineering","Civil and Environment Engineering" };
+
+
+        [ObservableProperty]
+        private string selectedModule;
+
+        [ObservableProperty]
+        private ObservableCollection<string> modules;
+
+
+       
+        private void PopulateModules()
+        {
+            // Clear existing modules
+            modules.Clear();
+
+            // Add modules based on semester and department
+            if (semester == 1 && department == "Electrical Engineering")
+            {
+                modules.Add("Module 1");
+                modules.Add("Module 2");
+                modules.Add("Module 3");
+                // Add more modules as needed
+            }
+
+            else if (semester == 2 && department == "Computer Engineering")
+            {
+                modules.Add("Module 4");
+                modules.Add("Module 5");
+                modules.Add("Module 6");
+                // Add more modules as needed
+            }
+            // Add more conditions for other semesters and departments
+
+            // Clear the selected module
+            SelectedModule = null;
+        }
+
+
+
+
+        public AddEditStudentVM(Student u)
         {
             Student1 = u;
-
+            // Assigning values from the  student object
             dateOfBirthDMY = Student1.DateOfBirthDMY;
             studentID = Student1.StudentID;
             firstname = Student1.FirstName;
             lastname = Student1.LastName;
             age = Student1.Age;
             gpa = Student1.GPA;
-            gender = Student1.Gender;
+            gender = Student1.Gender ;
             semester = Student1.Semester; ;
             dateofbirth = Student1.DateOfBirth;
             selectedImage = Student1.Image;
+            department = Student1.Department;
+            
 
         }
 
-        public AddStudentVM()
+        public AddEditStudentVM()
         {
+            modules = new ObservableCollection<string>();
+            PopulateModules();
         }
 
 
@@ -83,11 +137,11 @@ namespace Desktop_01_3990.ViewModel
             dialog.FilterIndex = 1;
             if (dialog.ShowDialog() == true)
             {
-                selectedImage = new BitmapImage(new Uri(dialog.FileName));
-
-                MessageBox.Show("Imgae successfuly uploded!", "successfull");
+                SelectedImage = new BitmapImage(new Uri(dialog.FileName));
+                MessageBox.Show("Image successfully uploaded!", "Success");
             }
         }
+
 
 
 
@@ -121,8 +175,8 @@ namespace Desktop_01_3990.ViewModel
                     DateOfBirth = dateofbirth,
                     Image = selectedImage,
                     GPA = gpa,
-                    DateOfBirthDMY = dateOfBirthDMY
-
+                    DateOfBirthDMY = dateOfBirthDMY,
+                    Department = department
                 };
 
             }
@@ -134,12 +188,12 @@ namespace Desktop_01_3990.ViewModel
                 Student1.LastName = lastname;
                 Student1.Age = age;
                 Student1.GPA = gpa;
-                Student1.DateOfBirth = dateofbirth;//-----------------
+                Student1.DateOfBirth = dateofbirth;
                 Student1.Gender = gender;
                 Student1.Image = selectedImage;
                 Student1.DateOfBirth = dateofbirth;
                 Student1.DateOfBirthDMY = dateOfBirthDMY;
-
+                Student1.Department = department;
 
 
             }
