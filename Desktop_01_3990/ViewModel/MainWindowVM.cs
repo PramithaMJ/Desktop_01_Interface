@@ -42,7 +42,7 @@ namespace Desktop_01_3990.ViewModel
         public void AddStudent()
         {
             var vm = new AddEditStudentVM();
-            vm.title = "ADD USER";
+            vm.title = "ADD STUDENT ";
             AddStudentView window = new AddStudentView(vm);
             window.ShowDialog();
 
@@ -77,7 +77,7 @@ namespace Desktop_01_3990.ViewModel
             if (selectedStudent != null)
             {
                 var vm = new AddEditStudentVM(selectedStudent);
-                vm.title = "EDIT USER";
+                vm.title = "EDIT STUDENT";
                 var window = new AddStudentView(vm);
 
                 window.ShowDialog();
@@ -108,6 +108,23 @@ namespace Desktop_01_3990.ViewModel
             BitmapImage image4 = new BitmapImage(new Uri("/Model/Images/4.png", UriKind.Relative));
             students.Add(new Student("EG/2021/7845",12, "shenghji3", "bfgfgdfndara", "FeMale", 3.2,1, "12/1/2000", image4, new DateTime(2000, 1, 12),"Civil"));
 
+        }
+
+        [RelayCommand]
+        public void Logout()
+        {
+            LogInWindowView mainLg = new LogInWindowView();
+            mainLg.Show();
+            CloseCurrentWindow();
+        }
+
+
+        public void CloseCurrentWindow()
+        {
+            foreach (Window item in Application.Current.Windows)
+            {
+                if (item.DataContext == this) item.Close();
+            }
         }
     }
 }

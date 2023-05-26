@@ -21,6 +21,7 @@ namespace Desktop_01_3990.ViewModel
         public string studentID;
 
         [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(FullName))]
         public string firstname;
 
         [ObservableProperty]
@@ -30,7 +31,10 @@ namespace Desktop_01_3990.ViewModel
             new ObservableCollection<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
 
         [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(FullName))]
         public string lastname;
+
+ 
 
         [ObservableProperty]
         public int age;
@@ -70,6 +74,14 @@ namespace Desktop_01_3990.ViewModel
         private ObservableCollection<string> modules;
 
 
+
+        
+        public string FullName
+        {
+            get{
+                return  $"{Firstname} {Lastname}"; 
+            }
+        }
        
         private void PopulateModules()
         {
@@ -207,5 +219,6 @@ namespace Desktop_01_3990.ViewModel
 
 
         }
+      
     }
 }

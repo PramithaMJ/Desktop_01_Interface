@@ -25,5 +25,31 @@ namespace Desktop_01_3990.View
 
             DataContext = student;
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Button_Resize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal)
+                this.WindowState = WindowState.Maximized;
+            else this.WindowState = WindowState.Normal;
+        }
+
+        private void Button_Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
     }
 }

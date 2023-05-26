@@ -3,9 +3,17 @@
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Desktop_01_3990"
-             StartupUri="View\LogInWindowView.xaml"
+             StartupUri="MainWindow.xaml"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Application.Resources>
+
+        <Style x:Key="border" TargetType="Border">
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="BorderBrush" Value="#61035c"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
 
         <Style x:Key="topButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -34,7 +42,7 @@
 
         <Style x:Key="menuButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#d0c0ff"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Height" Value="35"/>
             <Setter Property="Margin" Value="15 3"/>

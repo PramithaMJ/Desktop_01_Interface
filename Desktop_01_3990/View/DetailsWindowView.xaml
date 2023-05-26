@@ -4,67 +4,121 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Desktop_01_3990.View" 
-        xmlns:viewmodel="clr-namespace:Desktop_01_3990.ViewModel" 
+        xmlns:viewmodel="clr-namespace:Desktop_01_3990.ViewModel" xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         d:DataContext="{d:DesignInstance Type=viewmodel:AddEditStudentVM}"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="DetailsWindowView" Height="600" Width="400">
-    <Grid>
-
+        Title="DetailsWindowView" Height="500" Width="700">
+    <Border>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            
-            <Grid Grid.Column="0">
 
-                <Border Width="auto" Height="auto" CornerRadius="50">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="2">
+                    <Grid>
 
-                    <Image Width="100" Height="auto" Margin="0 0 1 0" 
-                       Source="{Binding Image}" />
+                        <Border Grid.Column="0" Margin="5"
+                            Background="#8d1294"
+                        CornerRadius="0 50 0 30">
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="3.*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="0" >
+                                    <Grid>
+
+                                    </Grid>
+                                </Border>
+
+                                <Border Grid.Row="1"
+                                Width="215" Height="215"
+                                Padding="3" Background="white"
+                                CornerRadius="0 100 100 100"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="0 0 0 0">
+                                    <Ellipse>
+                                        <Ellipse.Fill>
+                                            <ImageBrush 
+                                        ImageSource="{Binding Image, UpdateSourceTrigger=PropertyChanged}" />
+
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </Border>
+
+
+                                <Border Grid.Row="2">
+                                    <Button 
+                                Style="{StaticResource menuButton}"
+                                VerticalAlignment="Bottom" DockPanel.Dock="Bottom"
+                                Margin="15 0 15 20" Click="btnClose_Click">
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <Icon:PackIconMaterial Kind="Logout"
+                                                           Style="{StaticResource menuButtonIcon}"/>
+                                            <TextBlock Text="LogOut"/>
+                                        </StackPanel>
+                                    </Button>
+                                </Border>
+
+
+                            </Grid>
+                        </Border>
+
+                    </Grid>
                 </Border>
-            </Grid>
-            
-            <Grid Grid.Column="1">
-                <StackPanel>
 
 
 
 
-                    <TextBlock Text="Student ID"
+
+                <Grid Grid.Column="1">
+                    <StackPanel>
+
+
+
+
+                        <TextBlock Text="Student ID"
                    Margin="10 20 0 0"/>
 
-                    <TextBlock Text="{Binding StudentID}" 
+                        <TextBlock Text="{Binding StudentID}" 
                        Margin="10"/>
-                    <DatePicker SelectedDate="{Binding DateOfBirthDMY, Mode=TwoWay}" />
+                        <DatePicker SelectedDate="{Binding DateOfBirthDMY, Mode=TwoWay}" />
 
 
-                    <TextBlock Text="Last Name" 
+                        <TextBlock Text="Last Name" 
                    Margin="10 54 0 0"/>
-                    <TextBlock Text="{Binding Lastname}" 
+                        <TextBlock Text="{Binding Lastname}" 
                        Margin="10"/>
 
-                    <TextBlock Text="Age" 
+                        <TextBlock Text="Age" 
                    Margin="10 54 0 0"/>
-                    <TextBlock Text="{Binding Age}" 
+                        <TextBlock Text="{Binding Age}" 
                        Margin="10"/>
 
-                    <TextBlock Text="Semester" 
+                        <TextBlock Text="Semester" 
                    Margin="10 54 0 0"/>
-                    <TextBlock Text="{Binding Semester}" 
+                        <TextBlock Text="{Binding Semester}" 
                        Margin="10"/>
 
-                    <TextBlock Text="Gpa" 
+                        <TextBlock Text="Gpa" 
                    Margin="10 54 0 0"/>
-                    <TextBlock Text="{Binding Gpa}" 
+                        <TextBlock Text="{Binding Gpa}" 
                        Margin="10"/>
 
-                </StackPanel>
+                    </StackPanel>
+
+                </Grid>
 
             </Grid>
-            
+
+
         </Grid>
-       
-        
-    </Grid>
+    </Border>
+    
 </Window>

@@ -51,8 +51,8 @@ namespace Desktop_01_3990.View
                 this.DragMove();
             }
         }
+   
 
-      
 
     }
 }
