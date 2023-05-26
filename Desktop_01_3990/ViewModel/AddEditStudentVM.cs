@@ -34,8 +34,6 @@ namespace Desktop_01_3990.ViewModel
         [NotifyPropertyChangedFor(nameof(FullName))]
         public string lastname;
 
- 
-
         [ObservableProperty]
         public int age;
 
@@ -59,7 +57,7 @@ namespace Desktop_01_3990.ViewModel
         public BitmapImage selectedImage;
 
         [ObservableProperty]
-        public DateTime dateOfBirthDMY;
+        public DateOnly dateOfBirthDMY;
 
         [ObservableProperty]
         public string department;
@@ -73,9 +71,13 @@ namespace Desktop_01_3990.ViewModel
         [ObservableProperty]
         private ObservableCollection<string> modules;
 
+        public AddEditStudentVM()
+        {
+            modules = new ObservableCollection<string>();
+            PopulateModules();
+        }
 
 
-        
         public string FullName
         {
             get{
@@ -94,7 +96,7 @@ namespace Desktop_01_3990.ViewModel
                 modules.Add("Module 1");
                 modules.Add("Module 2");
                 modules.Add("Module 3");
-                // Add more modules as needed
+                
             }
 
             else if (semester == 2 && department == "Computer Engineering")
@@ -102,15 +104,12 @@ namespace Desktop_01_3990.ViewModel
                 modules.Add("Module 4");
                 modules.Add("Module 5");
                 modules.Add("Module 6");
-                // Add more modules as needed
+                
             }
-            // Add more conditions for other semesters and departments
 
             // Clear the selected module
             SelectedModule = null;
         }
-
-
 
 
         public AddEditStudentVM(Student u)
@@ -128,19 +127,10 @@ namespace Desktop_01_3990.ViewModel
             dateofbirth = Student1.DateOfBirth;
             selectedImage = Student1.Image;
             department = Student1.Department;
-            
 
         }
 
-        public AddEditStudentVM()
-        {
-            modules = new ObservableCollection<string>();
-            PopulateModules();
-        }
 
-
-
-        //get image 
         [RelayCommand]
         public void UploadPhoto()
         {
@@ -154,12 +144,6 @@ namespace Desktop_01_3990.ViewModel
             }
         }
 
-
-
-
-
-
-
         public Student Student1 { get; private set; }
         public Action CloseAction { get; internal set; }
 
@@ -168,9 +152,9 @@ namespace Desktop_01_3990.ViewModel
         {
            
 
-            if (gpa < 0 || gpa > 4)
+            if (gpa < 0 || gpa >= 4)
             {
-                MessageBox.Show("GPA value must be between 0 and 4.", "Error");
+                MessageBox.Show("GPA Value must be between 0 and 4 ", "Error");
                 return;
             }
             if (Student1 == null)
@@ -212,11 +196,9 @@ namespace Desktop_01_3990.ViewModel
 
             if (Student1.FirstName != null)
             {
-
                 CloseAction();
             }
             Application.Current.MainWindow.Show();
-
 
         }
       

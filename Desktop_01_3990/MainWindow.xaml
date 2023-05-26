@@ -37,12 +37,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!--Menu Icon-->
-                <!--<Button Style="{StaticResource topButton}"
-                        Margin="20 28 0 35">
-                    <Icon:PackIconMaterial Kind="Menu"
-                                           Width="15" Height="15"/>
-                </Button>-->
+             
 
                 <Border Grid.Row="1" Background="#8d1294"
                         CornerRadius="0 50 0 30">
@@ -358,7 +353,7 @@
                                             Binding="{Binding Age,UpdateSourceTrigger=PropertyChanged}"
                                             IsReadOnly="False"/>
                         <DataGridTextColumn Header="DoB" Width="*"  
-                                            Binding="{Binding DateOfBirth,UpdateSourceTrigger=PropertyChanged}" 
+                                            Binding="{Binding DateOfBirthDMY,UpdateSourceTrigger=PropertyChanged}" 
                                             IsReadOnly="True" />
                         <DataGridTextColumn Header="GPA" Width="auto" 
                                             Binding="{Binding GPA,UpdateSourceTrigger=PropertyChanged}" 

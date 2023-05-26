@@ -18,6 +18,9 @@
     <None Remove="Images\7.png" />
     <None Remove="Images\8.png" />
     <None Remove="Images\9.png" />
+    <None Remove="Images\lg.jpg" />
+    <None Remove="Images\LogIN.jpg" />
+    <None Remove="Images\student.jpg" />
     <None Remove="Model\Images\1.png" />
     <None Remove="Model\Images\10.png" />
     <None Remove="Model\Images\2.png" />
@@ -50,6 +53,9 @@
     <Resource Include="Images\7.png" />
     <Resource Include="Images\8.png" />
     <Resource Include="Images\9.png" />
+    <Resource Include="Images\lg.jpg" />
+    <Resource Include="Images\LogIN.jpg" />
+    <Resource Include="Images\student.jpg" />
     <Resource Include="Model\Images\1.png" />
     <Resource Include="Model\Images\10.png" />
     <Resource Include="Model\Images\2.png" />

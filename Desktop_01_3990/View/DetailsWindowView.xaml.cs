@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Desktop_01_3990.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace Desktop_01_3990.View
         public DetailsWindowView(object student)
         {
             InitializeComponent();
-
+            DataContext = new DetailsWindowViewVM();
             DataContext = student;
         }
 

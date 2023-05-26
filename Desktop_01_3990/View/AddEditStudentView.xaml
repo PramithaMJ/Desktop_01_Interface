@@ -112,7 +112,7 @@
                     <Border Grid.Column="0" Margin="5"
                             Background="#8d1294"
                         CornerRadius="0 50 0 30">
-                        <Grid >
+                        <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="3.*"/>

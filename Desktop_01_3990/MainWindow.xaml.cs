@@ -92,7 +92,7 @@ namespace Desktop_01_3990
             {
                 view.Filter = item =>
                 {
-                    Student student2 = item as Student;
+                    Student? student2 = item as Student;
                     return (student2 != null) &&
                            (student2.StudentID.Contains(searchText) ||
                             student2.FirstName.Contains(searchText) ||
@@ -100,7 +100,10 @@ namespace Desktop_01_3990
                             student2.Age.ToString().Contains(searchText) ||
                             student2.DateOfBirth.ToString().Contains(searchText) ||
                             student2.Department.ToString().Contains(searchText) ||
-                            student2.GPA.ToString().Contains(searchText));
+                            student2.DateOfBirthDMY.ToString().Contains(searchText) ||
+                            student2.GPA.ToString().Contains(searchText)||
+                            student2.Gender.ToString().Contains(searchText) ||
+                            student2.Semester.ToString().Contains(searchText));
                 };
 
                 searchPlaceholderTextBlock.Visibility = Visibility.Collapsed;

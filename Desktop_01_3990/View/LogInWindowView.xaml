@@ -7,53 +7,111 @@
         xmlns:viewmodel="clr-namespace:Desktop_01_3990.ViewModel" xmlns:components="clr-namespace:Desktop_01_3990.Components" xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="LogInWindowView" 
-        Height="720" Width="1080"
+        Height="400" Width="700"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None" AllowsTransparency="True"
-        Background="White">
+        Background="Transparent">
     <Window.DataContext>
         <viewmodel:LogInWindowVM/>
     </Window.DataContext>
-    <Border CornerRadius="30" BorderThickness="2" BorderBrush="Magenta">
+    <Border Background="#eff2f7" CornerRadius="30"
+            MouseDown="Border_MouseDown" 
+            MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            
+            
             <Border Grid.Row="0">
                 <Grid >
-                <!--Top Button-->
-                <Button x:Name="btnClose" ToolTip="Close"
-                        Style="{StaticResource topButton}" Margin="0 0 20 0"
-                        Background="#dcdcdc" HorizontalAlignment="Right" 
-                        Click="btnCloseClick">
-                    <Icon:PackIconMaterial Kind="Close"/>
-                </Button>
+                    <!--Top Button-->
+                    <Button x:Name="btnClose" ToolTip="Close"
+                            Style="{StaticResource topButton}" Margin="0 0 20 0"
+                            Background="#dcdcdc" HorizontalAlignment="Right" 
+                            Click="btnCloseClick">
+                        <Icon:PackIconMaterial Kind="Close"/>
+                    </Button>
 
-                <Button Style="{StaticResource topButton}" Margin="0 0 55 0"
-                        ToolTip="Resize" Click="Button_Resize_Click"
-                        Background="#dcdcdc" HorizontalAlignment="Right">
-                    <Icon:PackIconMaterial Kind="Resize" />
-                </Button>
+                    <Button Style="{StaticResource topButton}" Margin="0 0 55 0"
+                            ToolTip="Resize" Click="Button_Resize_Click"
+                            Background="#dcdcdc" HorizontalAlignment="Right">
+                        <Icon:PackIconMaterial Kind="Resize" />
+                    </Button>
 
-                <Button Style="{StaticResource topButton}" Margin="0 0 90 0"
-                        ToolTip="Minimize"
-                        Background="#dcdcdc" HorizontalAlignment="Right"
-                        Click="Button_Minimize_Click">
-                    <Icon:PackIconMaterial Kind="WindowMinimize" />
-                </Button>
-            </Grid>
+                    <Button Style="{StaticResource topButton}" Margin="0 0 90 0"
+                            ToolTip="Minimize"
+                            Background="#dcdcdc" HorizontalAlignment="Right"
+                            Click="Button_Minimize_Click">
+                        <Icon:PackIconMaterial Kind="WindowMinimize" />
+                    </Button>
+                </Grid>
              
             </Border>
 
-            <Border  Grid.Row="1"  BorderThickness="3"
-                     BorderBrush="Black">
+            <Border Grid.Row="1">
                  <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Margin="5"
+                            Background="#8d1294"
+                        CornerRadius="0 50 0 30">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="3.*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Border Grid.Row="0" Margin="0 10 0 10"
+                                    >
+                                <Grid>
+                                    <TextBlock Text="WELCOME "
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               FontSize="20" FontWeight="Bold"
+                                               TextWrapping="Wrap"
+                                               Foreground="#ffffff"/>
+                                </Grid>
+                            </Border>
+
+                            <Border Grid.Row="1"
+                                Height="210"  Width="220"
+                                Padding="3" Background="white"
+                                CornerRadius="0 100 100 100"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="0 0 0 0">
+                                <Ellipse>
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="\Images\student.jpg"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Border>
+
+
+                            <Border Grid.Row="2">
+                                <Button 
+                                Style="{StaticResource menuButton}"
+                                VerticalAlignment="Bottom" DockPanel.Dock="Bottom"
+                                Margin="15 0 15 20" Click="btnClose_Click">
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Icon:PackIconMaterial Kind="ExitToApp"
+                                                           Style="{StaticResource menuButtonIcon}"/>
+                                        <TextBlock Text="Exit"/>
+                                    </StackPanel>
+                                </Button>
+                            </Border>
+
+
+                        </Grid>
+                    </Border>
+
                     <Border Grid.Column="1">
                       <Grid>
                             <Grid.RowDefinitions>
@@ -61,28 +119,124 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
+                            <Border Grid.Row="0">
+                                <Grid>
+                                   
+                                </Grid>
+                            </Border>
 
-                            <TextBlock Grid.Row="0" Text="Username:" />
-                            <TextBox Grid.Row="0" Margin="80,0,0,0" Text="{Binding Username}" />
-                            <TextBlock Grid.Row="1" Text="Password:" />
-                            <components:BindablePasswordBox Grid.Row="1" Margin="80,0,0,0" Password="{Binding Password,UpdateSourceTrigger=PropertyChanged}" />
-                            <Button Grid.Row="2" Margin="0,20,0,0" Width="80" Content="Login" Command="{Binding LoginCommand}" />
+                            <Border Grid.Row="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                       
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.Row="0">
+                                        <Grid>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <Border Grid.Column="0">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+
+                                                        </Grid.RowDefinitions>
+
+                                                        <Grid Grid.Row="0" Margin="30 0 0 0"
+                                                              HorizontalAlignment="Left"
+                                                              VerticalAlignment="Center">
+                                                            <TextBlock  Text="Username:"
+                                                                        FontSize="15"/>
+                                                        </Grid>
+
+                                                        <Grid Grid.Row="1" Margin="30 0 0 0"
+                                                              HorizontalAlignment="Left"
+                                                              VerticalAlignment="Center">
+                                                            <TextBlock Text="Password:"
+                                                                        FontSize="15"/>
+                                                        </Grid>
+                                       
+                                                    </Grid>
+                                                </Border>
+
+                                                <Border Grid.Column="1">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+
+                                                        </Grid.RowDefinitions>
+
+                                                        <Grid Grid.Row="0">
+                                                            <TextBox  Margin="0,5,30,5" 
+                                                                      Text="{Binding Username}" />
+                                                        </Grid>
+
+                                                        <Grid Grid.Row="1">
+                                                            <components:BindablePasswordBox 
+                                                                     Grid.Row="1" Margin="0,5,30,5" 
+                                                                     Password="{Binding Password,UpdateSourceTrigger=PropertyChanged}" />
+                                                        </Grid>
+
+
+
+                                                    </Grid>
+                                                </Border>
+
+
+                                            </Grid>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Row="1">
+                                        <Grid>
+                                            <Grid Grid.Row="2">
+                                                
+                                                <Button Style="{StaticResource addButton}" 
+                                                         Command="{Binding LoginCommand}" 
+                                                        VerticalAlignment="Center"
+                                                        HorizontalAlignment="Center">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Icon:PackIconMaterial Kind="Login" VerticalAlignment="Center"
+                                                                               Width="11" Height="11"
+                                                                               Margin="0 1 8 0"/>
+                                                        <TextBlock Text="LOG IN"/>
+                                                    </StackPanel>
+                                                </Button>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                                
+                               
+                            </Border>
+
+                            <Border Grid.Row="2">
+                                <StackPanel Margin="20">
+                                    <TextBlock Text="User Name : admin"/>
+                                    <TextBlock Text="Password    : 1234"/>
+                                </StackPanel>
+                            </Border>
+                            
                         </Grid>
                     </Border>
-                     
-                     
+
+                   
                      
 
                  </Grid>
             
             </Border>
 
-            <Border Grid.Row="2" CornerRadius="0 0 500 0" Background="Magenta"
-                    BorderThickness="5" BorderBrush="Black">
-                <Grid>
-                    
-                </Grid>
-            </Border>
+        
         </Grid>
         
    

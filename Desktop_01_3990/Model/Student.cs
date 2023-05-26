@@ -30,9 +30,9 @@ namespace Desktop_01_3990.Model
         }
 
         public int Semester { get; set; }
-        public DateTime DateOfBirthDMY { get;  set; }
+        public DateOnly DateOfBirthDMY { get;  set; }
   
-        public Student(string studentID, int age, string firstName, string lastName, string gender, double gpa, int semester, string dateOfBirth, BitmapImage image, DateTime dateOfBirthDMY,string department)
+        public Student(string studentID, int age, string firstName, string lastName, string gender, double gpa, int semester, BitmapImage image, DateOnly dateOfBirthDMY,string department)
         {
             DateOfBirthDMY = dateOfBirthDMY;
             StudentID = studentID;
@@ -42,7 +42,7 @@ namespace Desktop_01_3990.Model
             GPA = gpa;
             FirstName = firstName;
             LastName = lastName;
-            DateOfBirth = dateOfBirth;
+           // DateOfBirth = dateOfBirth;
             Image = image;
             Department = department;
         }
